@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
 
+
 class UserProfileManager(BaseUserManager):
     """Manager for user profiles"""
 
@@ -21,7 +22,7 @@ class UserProfileManager(BaseUserManager):
 
     def create_superuser(self, email, name, password):
         """Create and save a new superuser with given details"""
-        user= self.create_user(email,name.password)
+        user= self.create_user(email,name,password)
 
         user.is_superuser = True
         user.is_staff = True
@@ -45,7 +46,7 @@ class UserProfile (AbstractBaseUser, PermissionsMixin):
         """Retrieve full name of User"""
         return self.name
 
-    def get_short_name():
+    def get_short_name(self):
          """Retrieve short name of User"""
          return self.name
 
